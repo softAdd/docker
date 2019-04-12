@@ -1,0 +1,19 @@
+docker -v : версия Docker Engine
+docker ps : список "бегущих" контейнеров
+docker ps -a : список все контейнеров
+docker images : список локальных образов (images)
+
+docker search <image> : поиск образа <image> в DockerHub
+docker pull <image> : загрузить образ <image> из DockerHub
+
+docker run : команда для запуска контейнеров
+
+docker tag oldsname:v1 oldname:v2 : создать копию image с другим именем и тэгом
+
+docker build -t myimage:latest : создать image с именем myimage:latest из локального Dockerfile
+docker run -d myimage:latest : запустить неинтерактивно контейнер myimage:latest
+
+docker rm <ID> : удалить контейнер <ID>
+docker rmi <ID> : удалить образ <ID>
+
+exit : выйти из контейнера
