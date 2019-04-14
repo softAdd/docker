@@ -1,0 +1,66 @@
+Dockerfile и docker-compose.yml
+
+Код из docker-compose.yml:
+
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+1) Создаем в директории, где лежит docker-compose.yml папку db
+2) Внутри созданной папки создаем Dockerfile со следующим содержимым:
+FROM mariadb
+3) В docker-compose добавляем ключ build вместо image:
+image: mariadb -> build: ./db
+Этот ключ обозначает, что образ контейнера должен быть создан из Dockerfile, расположенного
+в этом каталоге.
+4) По аналогии с базой данных создаем директорию adminer и внутри нее Dockerfile:
+FROM adminer
+И заменяем image на build: ./adminer
+5) Переходим в терминал.
+6) Перестраиваем проект: docker-compose build
+7) Теперь можно запускать: docker-compose up
+8) Проект работает. Можно открыть в браузере.
+
+Ключ volumes
+Позволяет сохранять данные вне контейнера
+Добавим в services: db ключ "volumes":
+
+  db:
+    build: ./db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - /my/custom:/etc/mysql/conf.d
+    
+Тома docker - это каталоги, которые не являются частью файловой системы конкретного контейнера.
+Их можно смонтировать 3 разными способами:
+1) Объявить том при запуске контейнера при помощи флага -v:
+docker run -v /data ubuntu
+2) С помощью инструкции VOLUME в Dockerfile:
+VOLUME /data
+3) Расширение аргументов в команде docker run
+директория локально на пк : директория в контейнере
+/home/data:/data
+
+Таким образом:
+
+    volumes:
+      - /my/custom:/etc/mysql/conf.d
+      
+/my/custom - путь до директории на вашем ПК, где будут сохраняться данные контейнера
+Можно создать папку databases и заменить /my/custom на ./databases
+Пересобрать проект командой docker-compose build в папке с проектом
+И запустить проект командой docker-compose up
