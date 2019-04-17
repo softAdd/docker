@@ -3,3 +3,4 @@
 2) Русскоязычная документация Docker: https://docker.crank.ru/docs/
 3) DockerHub: https://hub.docker.com/
 4) YouTube channel: DKA-DEVELOP "Docker уроки от А до Я"
+5) Docker синтаксис с примерами: https://habr.com/ru/company/infobox/blog/240623/
