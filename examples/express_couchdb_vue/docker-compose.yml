@@ -12,4 +12,3 @@ services:
       build: server
     app:
       build: vue-app
-      
