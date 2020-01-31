@@ -1,6 +1,12 @@
-Материалы:
-1) Оффициальная документация Docker: https://docs.docker.com/
-2) Русскоязычная документация Docker: https://docker.crank.ru/docs/
-3) DockerHub: https://hub.docker.com/
-4) YouTube channel: DKA-DEVELOP "Docker уроки от А до Я"
-5) Docker синтаксис с примерами: https://habr.com/ru/company/infobox/blog/240623/
+# Основы docker и docker-compose
+
+## Что такое docker?
+
+docker - программное обеспечение для запуска приложений в изолированной среде - контейнере.<br>
+docker-compose позволяет управлять группой таких контейнеров.
+
+## Установка docker
+
+Ссылки:<br>
+[* docker](https://docs.docker.com/get-docker/)<br>
+[* docker-compose](https://docs.docker.com/compose/install/)
